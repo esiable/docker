@@ -1,0 +1,14 @@
+version: "3"
+services:
+  apache:
+    build: ./apache
+    volumes:
+      - ../src:/usr/local/apache2/htdocs/
+    ports:
+      - "80:80"
+  php-fpm:
+    build: ./php-fpm
+    volumes:
+      - ../src:/usr/local/apache2/htdocs/
+    expose:
+      - 9000
