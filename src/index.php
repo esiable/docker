@@ -1,2 +1,2 @@
 <?php
-echo "Helloo world";
+phpinfo();

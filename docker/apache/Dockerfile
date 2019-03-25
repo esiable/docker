@@ -1,6 +1,8 @@
 FROM httpd:2
-RUN apt update;
-RUN apt upgrade;
-COPY ./vhosts/test.conf /usr/local/apache2/conf/test.conf
-RUN echo "Include /usr/local/apache2/conf/test.conf" \
+RUN apt-get update
+RUN apt-get upgrade
+COPY ./vhosts/* /usr/local/apache2/conf/vhosts/
+RUN echo "Include /usr/local/apache2/conf/vhosts/*" \
     >> /usr/local/apache2/conf/httpd.conf
+
+

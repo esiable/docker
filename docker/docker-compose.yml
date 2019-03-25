@@ -3,12 +3,15 @@ services:
   apache:
     build: ./apache
     volumes:
-      - ../src:/usr/local/apache2/htdocs/
+      - ${HOST_CODE_PATH}:${CONTAINER_CODE_PATH}
     ports:
       - "80:80"
   php-fpm:
-    build: ./php-fpm
+    build:
+      context: ./php-fpm
+      args:
+        PHP_VERSION: ${PHP_VERSION}
     volumes:
-      - ../src:/usr/local/apache2/htdocs/
+      - ${HOST_CODE_PATH}:${CONTAINER_CODE_PATH}
     expose:
       - 9000
